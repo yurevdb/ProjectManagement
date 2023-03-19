@@ -25,6 +25,11 @@ public class ApplicationDbContext: DbContext
     /// </summary>
     public DbSet<Core.Task> Tasks { get; set; }
 
+    /// <summary>
+    /// Gets the database set for the tags
+    /// </summary>
+    public DbSet<Tag> Tags { get; set; }
+
     #endregion
 
     #region Configuration
@@ -49,6 +54,7 @@ public class ApplicationDbContext: DbContext
         // Apply configurations
         modelBuilder.ApplyConfiguration(new PoolConfiguration());
         modelBuilder.ApplyConfiguration(new TaskConfiguration());
+        modelBuilder.ApplyConfiguration(new TagConfiguration());
     }
 
     #endregion

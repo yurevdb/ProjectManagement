@@ -27,6 +27,16 @@
         /// </summary>
         private Bucket? mBucket = null;
 
+        /// <summary>
+        /// The locally stored complexity
+        /// </summary>
+        private TaskComplexity mComplexity = TaskComplexity.Medium;
+
+        /// <summary>
+        /// The locally stored tags
+        /// </summary>
+        private readonly IList<Tag> mTags;
+
         #endregion
 
         #region Public Properties
@@ -58,6 +68,24 @@
         }
 
         /// <summary>
+        /// Gets or sets the complexity
+        /// </summary>
+        public TaskComplexity Complexity 
+        {
+            get => mComplexity;
+            set
+            {
+                mComplexity = value;
+                Update();
+            }
+        }
+
+        /// <summary>
+        /// Gets the tags associated with the task
+        /// </summary>
+        public IEnumerable<Tag> Tags => mTags.ToList();
+
+        /// <summary>
         /// Gets or sets the <see cref="Core.Pool"/> associated with the <see cref="Task"/>
         /// </summary>
         public Pool? Pool {
@@ -79,6 +107,19 @@
                 mBucket = value;
                 Update();
             }
+        }
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        public Task()
+        {
+            // Initialize the lists
+            mTags = new List<Tag>();
         }
 
         #endregion
