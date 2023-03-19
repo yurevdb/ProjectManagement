@@ -1,0 +1,68 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="FloatingWindowStyle" TargetType="{x:Type Window}">
+        <Setter Property="WindowStyle" Value="None"/>
+        <Setter Property="AllowsTransparency" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Window}">
+                    <Grid>
+                        <Border x:Name="container"
+                                CornerRadius="{Binding CornerRadius, FallbackValue=24}"
+                                Background="White"/>
+
+                        <Border CornerRadius="{Binding ElementName=container, Path=CornerRadius}">
+                            <Border.Background>
+                                <LinearGradientBrush>
+                                    <GradientStop Color="{StaticResource TopGradient}" Offset="0"/>
+                                    <GradientStop Color="{StaticResource BottomGradient}" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+
+                        <Grid>
+                            <Grid.OpacityMask>
+                                <VisualBrush Visual="{Binding ElementName=container}"/>
+                            </Grid.OpacityMask>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="{Binding CaptionHeight, FallbackValue=30}"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0"
+                                  Background="{StaticResource BackgroundLightBrush}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0"
+                                           Text="{TemplateBinding Title}"
+                                           FontWeight="Bold"
+                                           TextAlignment="Center"/>
+
+                                <StackPanel Grid.Column="1"
+                                            Orientation="Horizontal">
+                                    <Button Style="{StaticResource WindowButtonStyle}"
+                                            Content="{StaticResource FaWindowClose}"
+                                            Command="{Binding CloseCommand}"
+                                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <ContentPresenter Grid.Row="1"
+                                              Content="{TemplateBinding Content}"/>
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <LinearGradientBrush x:Key="Background">
+        <GradientStop Color="{StaticResource TopGradient}" Offset="0"/>
+        <GradientStop Color="{StaticResource BottomGradient}" Offset="1"/>
+    </LinearGradientBrush>
+    
+</ResourceDictionary>

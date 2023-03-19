@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+
+    <Color x:Key="Background">#121212</Color>
+    <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource Background}"/>
+
+    <Color x:Key="BackgroundLight">#181818</Color>
+    <SolidColorBrush x:Key="BackgroundLightBrush" Color="{StaticResource BackgroundLight}"/>
+
+    <Color x:Key="BottomGradient">#282828</Color>
+    <SolidColorBrush x:Key="BottomGradientBrush" Color="{StaticResource BottomGradient}"/>
+
+    <Color x:Key="TopGradient">#404040</Color>
+    <SolidColorBrush x:Key="TopGradientBrush" Color="{StaticResource TopGradient}"/>
+
+    <Color x:Key="PrimaryText">#FFFFFF</Color>
+    <SolidColorBrush x:Key="PrimaryTextBrush" Color="{StaticResource PrimaryText}"/>
+
+    <Color x:Key="SecondaryText">#b3b3b3</Color>
+    <SolidColorBrush x:Key="SecondaryTextBrush" Color="{StaticResource SecondaryText}"/>
+
+    <Color x:Key="Accent">#ff375f</Color>
+    <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource Accent}"/>
+
+</ResourceDictionary>
