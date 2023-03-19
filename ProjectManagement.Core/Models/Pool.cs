@@ -12,6 +12,11 @@
         /// </summary>
         private readonly IList<Task> mTasks;
 
+        /// <summary>
+        /// The locally stored name
+        /// </summary>
+        private string mName = string.Empty;
+
         #endregion
 
         #region Public Properties
@@ -19,7 +24,15 @@
         /// <summary>
         /// Gets or sets the name of the <see cref="Pool"/>
         /// </summary>
-        public string Name { get; set; } = string.Empty;
+        public string Name
+        {
+            get => mName;
+            set
+            {
+                mName = value;
+                Update();
+            }
+        }
 
         /// <summary>
         /// Gets the tasks in the pool

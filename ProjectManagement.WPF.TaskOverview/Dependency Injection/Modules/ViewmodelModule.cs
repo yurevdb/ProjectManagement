@@ -13,6 +13,7 @@ namespace ProjectManagement.WPF.TaskOverview
             Bind<TaskOverviewViewModel>().ToSelf().InTransientScope();
             Bind<PoolEditorViewModel>().ToSelf().InTransientScope();
             Bind<TaskInputViewModel>().ToSelf().InTransientScope();
+            Bind<ConfigViewModel>().ToSelf().InTransientScope();
         }
     }
 }

@@ -46,5 +46,18 @@ namespace ProjectManagement.WPF.TaskOverview
             // Show the main window
             Application.Current.MainWindow.Show();
         }
+
+        /// <summary>
+        /// Shows the config window
+        /// </summary>
+        public void ShowConfig()
+        {
+            var w = new Config()
+            {
+                Owner = Application.Current.MainWindow
+            };
+
+            w.ShowDialog();
+        }
     }
 }

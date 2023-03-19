@@ -85,10 +85,15 @@ namespace ProjectManagement.WPF.TaskOverview
         /// </summary>
         private async void AddTask()
         {
+            // Check if description has words
+            if (string.IsNullOrEmpty(TaskDescription))
+                return;
+
             // Create the new task
             var t = new Task()
             {
-                Description = TaskDescription
+                Description = TaskDescription,
+                Status = TaskStatus.NotYetStarted
             };
 
             // Empty the description

@@ -40,7 +40,7 @@ public class ApplicationDbContext: DbContext
             Directory.CreateDirectory(path);
 
         // Setup the database to use sqlite
-        optionsBuilder.UseSqlite($"Data Source={Path.Join(path, "ProjectManagement.db")}");
+        optionsBuilder.UseSqlite($"Data Source={Path.Join(path, $"ProjectManagement.db")}");
     }
 
     /// <inheritdoc/>

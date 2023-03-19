@@ -11,29 +11,18 @@
         WindowStartupLocation="CenterOwner"
         DataContext="{Binding Source={StaticResource IocContainer}, Path=PoolEditorViewModel}"
         Background="{StaticResource Background}"
-        WindowStyle="None"
         ShowInTaskbar="False"
         SizeToContent="Height"
-        FocusManager.FocusedElement="{Binding ElementName=txtName}">
-    <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="30"/>
-    </WindowChrome.WindowChrome>
-    <Border>
+        FocusManager.FocusedElement="{Binding ElementName=txtName}"
+        ResizeMode="NoResize">
+    <Border Padding="12">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-
-            <TextBlock Grid.Row="0"
-                       Text="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=Title}"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       FontWeight="Bold"/>
-
-            <StackPanel Grid.Row="1"
-                        Margin="12"
+            
+            <StackPanel Grid.Row="0"
                         Grid.IsSharedSizeScope="True">
                 <!--#region Name-->
 
@@ -45,7 +34,8 @@
 
                     <TextBlock Grid.Column="0"
                                Text="Name: "
-                               VerticalAlignment="Center"/>
+                               VerticalAlignment="Center"
+                               FontSize="{StaticResource FontSizeLarge}"/>
 
                     <TextBox Grid.Column="1"
                              Text="{Binding Pool.Name}"
@@ -59,8 +49,8 @@
                     Command="{Binding SaveCommand}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
                     Background="{StaticResource AccentBrush}"
-                    Grid.Row="2"
-                    Margin="12 0 12 12"
+                    Grid.Row="1"
+                    Margin="0 12 0 0"
                     IsDefault="True"/>
         </Grid>
     </Border>

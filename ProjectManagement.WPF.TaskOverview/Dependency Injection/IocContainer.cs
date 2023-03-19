@@ -34,6 +34,11 @@ namespace ProjectManagement.WPF.TaskOverview
         /// </summary>
         public TaskInputViewModel TaskInputViewModel => mKernel.Get<TaskInputViewModel>();
 
+        /// <summary>
+        /// Gets the <see cref="TaskOverview.ConfigViewModel"/>
+        /// </summary>
+        public ConfigViewModel ConfigViewModel => mKernel.Get<ConfigViewModel>();
+
         #endregion
 
         #region Constructor

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectManagement.WPF.TaskOverview"
+        xmlns:core="clr-namespace:ProjectManagement.WPF.Core;assembly=ProjectManagement.WPF.Core"
         mc:Ignorable="d"
         Title="Taskr" 
         Height="960" 
@@ -18,8 +19,10 @@
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
+        <!--#region Pools-->
+        
         <Grid Grid.Column="0"
-              Background="{StaticResource BackgroundLightBrush}"
+              Background="{StaticResource BackgroundBrush}"
               >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -60,19 +63,50 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
-                            <TextBlock Text="{Binding Name}"/>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <TextBlock Text="{Binding Name}"
+                                       Grid.Column="0"/>
+
+                            <Button Grid.Column="1"
+                                    Content="Edit"
+                                    Padding="6 0"
+                                    Visibility="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, 
+                                                         Path=IsSelected, 
+                                                         Converter={core:BooleanToVisibilityConverter}}"
+                                    Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.EditPoolCommand}"/>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Grid Grid.Row="1">
-                <Button Content="Create Pool"
-                        Background="{StaticResource AccentBrush}"
-                        Margin="12"
-                        Command="{Binding CreatePoolCommand}"/>
-            </Grid>
+            <Border Grid.Row="1"
+                    Padding="12">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Content="Create Pool"
+                            Background="{StaticResource AccentBrush}"
+                            Command="{Binding CreatePoolCommand}"
+                            Grid.Column="0"/>
+
+                    <Button Content="Config"
+                            Margin="12 0 0 0"
+                            Grid.Column="1"
+                            Command="{Binding OpenConfigCommand}"/>
+                </Grid>
+            </Border>
         </Grid>
+        
+        <!--#endregion-->
+        
+        <!--#region Tasks-->
         
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
@@ -103,7 +137,8 @@
 
                     <Button Grid.Column="2"
                             Margin="12 0 0 0"
-                            Content="Pop Out"
+                            Content="{StaticResource FaExternalLink}"
+                            FontFamily="{StaticResource FaSolid}"
                             Command="{Binding OpenPopoutCommand}"/>
                 </Grid>
             </Border>
@@ -121,5 +156,7 @@
                 </ItemsControl>
             </ScrollViewer>
         </Grid>
+        
+        <!--#endregion-->
     </Grid>
 </Window>

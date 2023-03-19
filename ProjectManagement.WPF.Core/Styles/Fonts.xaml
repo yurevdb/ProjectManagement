@@ -2,9 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
                     xmlns:sys="clr-namespace:System;assembly=System.Runtime">
 
-    <FontFamily x:Key="FaSolid">pack://application;,,,/Resources/FontAwesome/Font Awesome 6 Free-Solid-900.otf#Font Awesome 6 Free Solid</FontFamily>
-    <FontFamily x:Key="FaRegular">pack://application:,,,/Fonts/Font Awesome 6 Free-Regular-400.otf</FontFamily>
-    <FontFamily x:Key="FaBrands">pack://application:,,,/Fonts/Font Awesome 6 Brands-Regular-400.otf</FontFamily>
+    <FontFamily x:Key="FaSolid">pack://application;,,,/Fonts/Font Awesome 6 Free-Solid-900.otf</FontFamily>
+    <FontFamily x:Key="FaRegular">pack://application;,,,/Fonts/Font Awesome 6 Free-Regular-400.otf</FontFamily>
+    <FontFamily x:Key="FaBrands">pack://application;,,,/Fonts/Font Awesome 6 Brands-Regular-400.otf</FontFamily>
     
     <sys:Double x:Key="FontSizeNormal">18</sys:Double>
     <sys:Double x:Key="FontSizeLarge">24</sys:Double>

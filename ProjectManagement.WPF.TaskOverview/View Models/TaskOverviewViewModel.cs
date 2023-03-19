@@ -93,6 +93,16 @@ namespace ProjectManagement.WPF.TaskOverview
         /// </summary>
         public ICommand OpenPopoutCommand { get; set; }
 
+        /// <summary>
+        /// Gets or sets the <see cref="ICommand"/> to edit the selected pool
+        /// </summary>
+        public ICommand EditPoolCommand { get; set; }
+
+        /// <summary>
+        /// Gets or sets the <see cref="ICommand"/> to open the config
+        /// </summary>
+        public ICommand OpenConfigCommand { get; set; }
+
         #endregion
 
         #region Constructor
@@ -109,6 +119,8 @@ namespace ProjectManagement.WPF.TaskOverview
             AddTaskCommand = new RelayCommand(AddTask);
             CreatePoolCommand = new RelayCommand(CreatePool);
             OpenPopoutCommand = new RelayCommand(OpenPopout);
+            EditPoolCommand = new RelayCommand(EditPool);
+            OpenConfigCommand = new RelayCommand(OpenConfig);
 
             // Set services
             this.mUiService = mUiService;
@@ -167,6 +179,10 @@ namespace ProjectManagement.WPF.TaskOverview
         /// </summary>
         private void AddTask()
         {
+            // Check if description has words
+            if (string.IsNullOrEmpty(TaskDescriptionInput))
+                return;
+
             // Create and add a new task
             var task = new Task()
             {
@@ -216,6 +232,22 @@ namespace ProjectManagement.WPF.TaskOverview
         }
 
         /// <summary>
+        /// Edits the selected pool
+        /// </summary>
+        private void EditPool()
+        {
+            // Show the editor
+            mUiService.ShowPoolEditor(SelectedPool);
+
+            // Save changes to the database
+            mContext.SaveChangesAsync();
+
+            // Notify changes
+            NotifyPropertyChanged(nameof(Pools));
+            NotifyPropertyChanged(nameof(SelectedPool));
+        }
+
+        /// <summary>
         /// Opens the pop out for task input
         /// </summary>
         private void OpenPopout()
@@ -228,6 +260,14 @@ namespace ProjectManagement.WPF.TaskOverview
             NotifyPropertyChanged(nameof(SelectedPool));
         }
 
+        /// <summary>
+        /// Opens the config window
+        /// </summary>
+        private void OpenConfig()
+        {
+            mUiService.ShowConfig();
+        }
+        
         #endregion
     }
 }
