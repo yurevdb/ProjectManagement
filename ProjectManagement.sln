@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagement.WPF.TaskOverview", "ProjectManagement.WPF.TaskOverview\ProjectManagement.WPF.TaskOverview.csproj", "{E90130BA-2B56-473E-95CB-02C2909FACA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagement.Presentation.WPF", "ProjectManagement.Presentation.WPF\ProjectManagement.Presentation.WPF.csproj", "{E90130BA-2B56-473E-95CB-02C2909FACA5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{CCA4B024-6D7D-42EC-B496-F70234C2E6DC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{D48CE884-876B-4E80-90F9-239EC259370A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagement.WPF.Core", "ProjectManagement.WPF.Core\ProjectManagement.WPF.Core.csproj", "{E6C09733-2C00-4450-8B24-624457ABA8C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagement.Presentation.Core", "ProjectManagement.Presentation.Core\ProjectManagement.Presentation.Core.csproj", "{E6C09733-2C00-4450-8B24-624457ABA8C8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagement.Core", "ProjectManagement.Core\ProjectManagement.Core.csproj", "{4D4661EE-FCD2-42DA-874F-09FD00C16F9F}"
 EndProject
@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagement.Persistance", "ProjectManagement.Infrastructure\ProjectManagement.Persistance.csproj", "{238539BA-7ED7-4D92-BD55-DF106DC8B073}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagement.Persistance", "ProjectManagement.Persistance\ProjectManagement.Persistance.csproj", "{238539BA-7ED7-4D92-BD55-DF106DC8B073}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

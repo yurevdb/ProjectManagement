@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <StartupObject>ProjectManagement.Presentation.WPF.App</StartupObject>
+    <ApplicationIcon>Logo.ico</ApplicationIcon>
+    <AssemblyName>Taskr</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectManagement.Core\ProjectManagement.Core.csproj" />
+    <ProjectReference Include="..\ProjectManagement.Persistance\ProjectManagement.Persistance.csproj" />
+    <ProjectReference Include="..\ProjectManagement.Presentation.Core\ProjectManagement.Presentation.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Ninject" Version="3.3.6" />
+  </ItemGroup>
+
+</Project>
