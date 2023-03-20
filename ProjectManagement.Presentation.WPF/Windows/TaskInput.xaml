@@ -30,13 +30,15 @@
                      Name="txtTaskDescription"/>
 
             <Button Grid.Column="1"
-                    Content="Add"
+                    Content="{StaticResource FaPlus}"
+                    FontFamily="{StaticResource FaSolid}"
                     IsDefault="True"
                     Command="{Binding AddCommand}"
                     Margin="12 0 0 0"/>
 
             <Button Grid.Column="2"
-                    Content="X"
+                    Content="{StaticResource FaXMark}"
+                    FontFamily="{StaticResource FaSolid}"
                     IsCancel="True"
                     Command="{Binding CloseCommand}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"

@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProjectManagement.Core;
 
 namespace ProjectManagement.Persistance
 {
@@ -15,6 +14,11 @@ namespace ProjectManagement.Persistance
             builder.HasKey(t => t.Id);
 
             builder.HasOne(t => t.Pool).WithMany(p => p.Tasks);
+
+            builder.HasMany(t => t.Tags);
+
+            builder.Metadata.FindNavigation(nameof(Core.Task.Tags))?.SetField("mTags");
+            builder.Metadata.FindNavigation(nameof(Core.Task.Tags))?.SetPropertyAccessMode(PropertyAccessMode.Field);
         }
     }
 }

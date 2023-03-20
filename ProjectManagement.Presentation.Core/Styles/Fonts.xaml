@@ -2,17 +2,18 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
                     xmlns:sys="clr-namespace:System;assembly=System.Runtime">
 
-    <FontFamily x:Key="FaSolid">pack://application;,,,/Fonts/Font Awesome 6 Free-Solid-900.otf</FontFamily>
-    <FontFamily x:Key="FaRegular">pack://application;,,,/Fonts/Font Awesome 6 Free-Regular-400.otf</FontFamily>
-    <FontFamily x:Key="FaBrands">pack://application;,,,/Fonts/Font Awesome 6 Brands-Regular-400.otf</FontFamily>
+    <FontFamily x:Key="FaSolid">pack://application;,,,/ProjectManagement.Presentation.Core;component/Fonts/Font Awesome 6 Free-Solid-900.otf#Font Awesome 6 Free Solid</FontFamily>
+    <FontFamily x:Key="FaRegular">pack://application;,,,/ProjectManagement.Presentation.Core;component/Fonts/Font Awesome 6 Free-Regular-400.otf#Font Awesome 6 Free Regular</FontFamily>
+    <FontFamily x:Key="FaBrands">pack://application;,,,/ProjectManagement.Presentation.Core;component/Fonts/Font Awesome 6 Free-Brands-400.otf#Font Awesome 6 Free Brands Regular</FontFamily>
     
     <sys:Double x:Key="FontSizeNormal">18</sys:Double>
     <sys:Double x:Key="FontSizeLarge">24</sys:Double>
     <sys:Double x:Key="FontSizeExtraLarge">32</sys:Double>
 
-    <sys:String x:Key="FaExternalLink">&#xf35d;</sys:String>
-    <sys:String x:Key="FaWindowMinimize">&#xf2d1;</sys:String>
-    <sys:String x:Key="FaWindowClose">&#xf410;</sys:String>
-    <sys:String x:Key="FaWindowToggle">&#xf2d2;</sys:String>
+    <sys:String x:Key="FaExternalLink">&#xf08e;</sys:String>
+    <sys:String x:Key="FaGear">&#xf013;</sys:String>
+    <sys:String x:Key="FaPlus">&#x2b;</sys:String>
+    <sys:String x:Key="FaXMark">&#xf00d;</sys:String>
+    <sys:String x:Key="FaEdit">&#xf044;</sys:String>
     
 </ResourceDictionary>

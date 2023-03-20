@@ -16,9 +16,6 @@ namespace ProjectManagement.Persistance
 
             builder.HasMany(p => p.Tasks).WithOne(t => t.Pool);
 
-            //builder.Property(p => p.Tasks)
-            //       .HasField("mTasks")
-            //       .UsePropertyAccessMode(PropertyAccessMode.Field);
             builder.Metadata.FindNavigation(nameof(Pool.Tasks))?.SetField("mTasks");
             builder.Metadata.FindNavigation(nameof(Pool.Tasks))?.SetPropertyAccessMode(PropertyAccessMode.Field);
         }

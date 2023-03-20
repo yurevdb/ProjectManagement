@@ -72,7 +72,8 @@
                                        Grid.Column="0"/>
 
                             <Button Grid.Column="1"
-                                    Content="Edit"
+                                    Content="{StaticResource FaEdit}"
+                                    FontFamily="{StaticResource FaSolid}"
                                     Padding="6 0"
                                     Visibility="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, 
                                                          Path=IsSelected, 
@@ -96,9 +97,10 @@
                             Command="{Binding CreatePoolCommand}"
                             Grid.Column="0"/>
 
-                    <Button Content="Config"
+                    <Button Content="{StaticResource FaGear}"
                             Margin="12 0 0 0"
                             Grid.Column="1"
+                            FontFamily="{StaticResource FaSolid}"
                             Command="{Binding OpenConfigCommand}"/>
                 </Grid>
             </Border>
@@ -131,7 +133,8 @@
 
                     <Button Grid.Column="1"
                             Margin="12 0 0 0"
-                            Content="Add"
+                            Content="{StaticResource FaPlus}"
+                            FontFamily="{StaticResource FaSolid}"
                             IsDefault="True"
                             Command="{Binding AddTaskCommand}"/>
 
