@@ -3,7 +3,7 @@ name: "Deplay Taskr"
 on:
   push:
     tags:
-      - "taskr/v*"
+      - "v*"
 
 env:
   PROJECT_PATH: "ProjectManagement.Presentation.WPF/ProjectManagement.Presentation.WPF.csproj"
