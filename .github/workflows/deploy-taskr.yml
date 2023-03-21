@@ -1,4 +1,4 @@
-name: "Deplay Taskr"
+name: "Deploy Taskr"
 
 on:
   push:
