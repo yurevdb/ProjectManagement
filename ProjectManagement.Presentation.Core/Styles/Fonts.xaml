@@ -15,5 +15,7 @@
     <sys:String x:Key="FaPlus">&#x2b;</sys:String>
     <sys:String x:Key="FaXMark">&#xf00d;</sys:String>
     <sys:String x:Key="FaEdit">&#xf044;</sys:String>
+    <sys:String x:Key="FaCircle">&#xf111;</sys:String>
+    <sys:String x:Key="FaCircleCheck">&#xf058;</sys:String>
     
 </ResourceDictionary>

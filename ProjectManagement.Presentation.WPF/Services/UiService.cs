@@ -59,5 +59,25 @@ namespace ProjectManagement.Presentation.WPF
 
             w.ShowDialog();
         }
+
+        /// <summary>
+        /// Shows the task editor window for the given <see cref="Task"/>
+        /// </summary>
+        /// <param name="task">The <see cref="Task"/> to edit</param>
+        /// <returns>The edited <see cref="Task"/></returns>
+        public Task ShowTaskEditor(Task task)
+        {
+            // Create window
+            var w = new TaskEditor(task)
+            {
+                Owner = Application.Current.MainWindow
+            };
+
+            // Show window
+            w.ShowDialog();
+
+            // Return the task
+            return task;
+        }
     }
 }

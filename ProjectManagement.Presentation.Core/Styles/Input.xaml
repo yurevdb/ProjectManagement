@@ -1,0 +1,44 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style TargetType="{x:Type CheckBox}">
+        <Setter Property="FontSize" Value="{StaticResource FontSizeNormal}"/>
+        <Setter Property="Foreground" Value="{StaticResource PrimaryTextBrush}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <TextBlock Text="{StaticResource FaCircle}"
+                                   Visibility="Collapsed"
+                                   FontFamily="{StaticResource FaSolid}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   Background="Transparent"
+                                   x:Name="unchecked"/>
+
+                        <TextBlock Text="{StaticResource FaCircleCheck}"
+                                   Visibility="Collapsed"
+                                   FontFamily="{StaticResource FaSolid}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   Foreground="{StaticResource AccentBrush}"
+                                   Background="Transparent"
+                                   x:Name="checked"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Visibility" TargetName="unchecked" Value="Collapsed"/>
+                            <Setter Property="Visibility" TargetName="checked" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter Property="Visibility" TargetName="unchecked" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="checked" Value="Collapsed"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

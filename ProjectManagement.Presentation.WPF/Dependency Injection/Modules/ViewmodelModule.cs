@@ -14,6 +14,7 @@ namespace ProjectManagement.Presentation.WPF
             Bind<PoolEditorViewModel>().ToSelf().InTransientScope();
             Bind<TaskInputViewModel>().ToSelf().InTransientScope();
             Bind<ConfigViewModel>().ToSelf().InTransientScope();
+            Bind<TaskEditorViewModel>().ToSelf().InTransientScope();
         }
     }
 }

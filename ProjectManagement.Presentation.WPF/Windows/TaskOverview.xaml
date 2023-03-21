@@ -71,14 +71,14 @@
                             <TextBlock Text="{Binding Name}"
                                        Grid.Column="0"/>
 
-                            <Button Grid.Column="1"
+                            <!--<Button Grid.Column="1"
                                     Content="{StaticResource FaEdit}"
                                     FontFamily="{StaticResource FaSolid}"
                                     Padding="6 0"
                                     Visibility="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, 
                                                          Path=IsSelected, 
                                                          Converter={core:BooleanToVisibilityConverter}}"
-                                    Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.EditPoolCommand}"/>
+                                    Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.EditPoolCommand}"/>-->
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -146,18 +146,8 @@
                 </Grid>
             </Border>
 
-            <ScrollViewer Grid.Row="1"
-                          Padding="12"
-                          HorizontalScrollBarVisibility="Disabled"
-                          VerticalScrollBarVisibility="Hidden">
-                <ItemsControl ItemsSource="{Binding SelectedPool.Tasks}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Description}"/>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </ScrollViewer>
+            <local:TaskViewer DataContext="{Binding SelectedPool.Tasks}"
+                              Grid.Row="1"/>
         </Grid>
         
         <!--#endregion-->

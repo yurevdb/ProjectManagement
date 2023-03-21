@@ -8,6 +8,7 @@
     <StartupObject>ProjectManagement.Presentation.WPF.App</StartupObject>
     <ApplicationIcon>Logo.ico</ApplicationIcon>
     <AssemblyName>Taskr</AssemblyName>
+	  <RuntimeIdentifier>win-x64</RuntimeIdentifier>
   </PropertyGroup>
 
   <ItemGroup>
