@@ -7,11 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" 
              d:DesignWidth="800"
-             d:DataContext="{Binding Source={x:Static local:TaskViewerDesignViewModel.Instance}, Path=Tasks}">
+             DataContext="{Binding Source={StaticResource IocContainer}, Path=TaskViewerViewModel}">
 
     <ListView ScrollViewer.HorizontalScrollBarVisibility="Hidden"
               ScrollViewer.VerticalScrollBarVisibility="Hidden"
-              ItemsSource="{Binding}"
+              ItemsSource="{Binding Tasks}"
               Background="Transparent"
               BorderBrush="Transparent"
               BorderThickness="0"
@@ -114,6 +114,8 @@
 
                     <Button Content="{StaticResource FaEdit}"
                             FontFamily="{StaticResource FaSolid}"
+                            Command="{Binding RelativeSource={RelativeSource AncestorType=local:TaskViewer}, Path=DataContext.OpenTaskEditorCommand}"
+                            CommandParameter="{Binding}"
                             Grid.Column="4"
                             Background="Transparent"
                             Padding="0"/>

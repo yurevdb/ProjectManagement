@@ -44,6 +44,11 @@ namespace ProjectManagement.Presentation.WPF
         /// </summary>
         public TaskEditorViewModel TaskEditorViewModel => mKernel.Get<TaskEditorViewModel>();
 
+        /// <summary>
+        /// Gets the <see cref="TaskOverview.TaskViewerViewModel"/>
+        /// </summary>
+        public TaskViewerViewModel TaskViewerViewModel => mKernel.Get<TaskViewerViewModel>();
+
         #endregion
 
         #region Constructor

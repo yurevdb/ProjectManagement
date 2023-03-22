@@ -146,8 +146,8 @@
                 </Grid>
             </Border>
 
-            <local:TaskViewer DataContext="{Binding SelectedPool.Tasks}"
-                              Grid.Row="1"/>
+            <local:TaskViewer Grid.Row="1"
+                              Tasks="{Binding SelectedPool.Tasks}"/>
         </Grid>
         
         <!--#endregion-->

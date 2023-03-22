@@ -3,7 +3,7 @@ name: "Deploy Taskr"
 on:
   push:
     tags:
-      - v*
+      - '*'
 
 env:
   PROJECT_PATH: "ProjectManagement.Presentation.WPF/ProjectManagement.Presentation.WPF.csproj"
