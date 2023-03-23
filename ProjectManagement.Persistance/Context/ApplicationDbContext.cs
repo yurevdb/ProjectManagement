@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjectManagement.Core;
 
-namespace ProjectManagement.Persistance;
+namespace ProjectManagement.Persistence;
 
 /// <summary>
 /// The <see cref="DbContext"/> for the application

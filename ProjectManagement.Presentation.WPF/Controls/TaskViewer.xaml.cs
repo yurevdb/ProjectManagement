@@ -13,22 +13,19 @@ namespace ProjectManagement.Presentation.WPF
         #region Dependency Properties
 
         /// <summary>
-        /// 
+        /// Gets or sets the tasks property
         /// </summary>
         public IEnumerable<Task> Tasks
         {
-            get { return (IEnumerable<Task>)GetValue(TasksProperty); }
-            set 
-            {   
-                SetValue(TasksProperty, value);
-            }
+            get => (IEnumerable<Task>)GetValue(TasksProperty);
+            set => SetValue(TasksProperty, value);
         }
 
         // Using a DependencyProperty as the backing store for Tasks.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TasksProperty = DependencyProperty.Register(nameof(Tasks), 
                                                                                               typeof(IEnumerable<Task>), 
                                                                                               typeof(TaskViewer),
-                                                                                              new PropertyMetadata(new List<Task>(), TasksPropertyChangedCallback, CoerceValue));
+                                                                                              new PropertyMetadata(new List<Task>(), TasksPropertyChangedCallback));
 
         /// <summary>
         /// 
@@ -37,12 +34,7 @@ namespace ProjectManagement.Presentation.WPF
         /// <param name="e"></param>
         private static void TasksPropertyChangedCallback(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            var x = e;
-        }
-
-        private static object CoerceValue(DependencyObject obj, object value)
-        {
-            return value;
+            ((TaskViewerViewModel)((TaskViewer)obj).DataContext).SetTasks((IEnumerable<Task>)e.NewValue);
         }
 
         #endregion

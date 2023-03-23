@@ -1,6 +1,6 @@
 ﻿using Ninject.Modules;
 
-namespace ProjectManagement.Persistance
+namespace ProjectManagement.Persistence
 {
     public class PersistanceModule : NinjectModule
     {

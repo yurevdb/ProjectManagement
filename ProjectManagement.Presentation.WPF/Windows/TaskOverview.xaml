@@ -147,7 +147,7 @@
             </Border>
 
             <local:TaskViewer Grid.Row="1"
-                              Tasks="{Binding SelectedPool.Tasks}"/>
+                              Tasks="{Binding DataContext.SelectedPool.Tasks, RelativeSource={RelativeSource AncestorType=local:TaskOverview}}"/>
         </Grid>
         
         <!--#endregion-->

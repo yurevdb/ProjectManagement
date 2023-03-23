@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProjectManagement.Core\ProjectManagement.Core.csproj" />
-    <ProjectReference Include="..\ProjectManagement.Persistance\ProjectManagement.Persistance.csproj" />
+    <ProjectReference Include="..\ProjectManagement.Persistance\ProjectManagement.Persistence.csproj" />
     <ProjectReference Include="..\ProjectManagement.Presentation.Core\ProjectManagement.Presentation.Core.csproj" />
   </ItemGroup>
 

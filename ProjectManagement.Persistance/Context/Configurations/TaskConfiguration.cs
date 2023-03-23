@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace ProjectManagement.Persistance
+namespace ProjectManagement.Persistence
 {
     /// <summary>
     /// Type configuration for <see cref="Core.Task"/>

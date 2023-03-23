@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProjectManagement.Core;
 
-namespace ProjectManagement.Persistance
+namespace ProjectManagement.Persistence
 {
     /// <summary>
     /// Type configuration for <see cref="Tag"/>

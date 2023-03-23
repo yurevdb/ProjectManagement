@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagement.Persistance", "ProjectManagement.Persistance\ProjectManagement.Persistance.csproj", "{238539BA-7ED7-4D92-BD55-DF106DC8B073}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagement.Persistence", "ProjectManagement.Persistance\ProjectManagement.Persistence.csproj", "{238539BA-7ED7-4D92-BD55-DF106DC8B073}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,5 +1,5 @@
 ﻿using Ninject;
-using ProjectManagement.Persistance;
+using ProjectManagement.Persistence;
 
 namespace ProjectManagement.Presentation.WPF
 {
