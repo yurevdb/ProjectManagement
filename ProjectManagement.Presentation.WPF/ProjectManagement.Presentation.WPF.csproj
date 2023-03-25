@@ -6,9 +6,9 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <StartupObject>ProjectManagement.Presentation.WPF.App</StartupObject>
-    <ApplicationIcon>Logo_Medium.ico</ApplicationIcon>
     <AssemblyName>Taskr</AssemblyName>
 	  <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	  <ApplicationIcon>Logo_Medium.ico</ApplicationIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
