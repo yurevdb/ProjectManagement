@@ -39,8 +39,9 @@ jobs:
           release_name: ${{ github.ref }}
 
       - name: Add assets to release
-        uses: csexton/release-asset-action@v2
+        uses: meeDamian/github-release@2.0
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          pattern: ProjectManagement.Presentation.WPF/bin/Release/net6.0-windows/win-x64/publish/*
-          release-url: ${{ steps.create_release.output.upload_url }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: ProjectManagement.Presentation.WPF/bin/Release/net6.0-windows/win-x64/publish/
+          gzip: true
+          
