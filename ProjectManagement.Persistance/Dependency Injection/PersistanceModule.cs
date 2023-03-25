@@ -2,7 +2,7 @@
 
 namespace ProjectManagement.Persistence
 {
-    public class PersistanceModule : NinjectModule
+    public class PersistenceModule : NinjectModule
     {
         public override void Load()
         {

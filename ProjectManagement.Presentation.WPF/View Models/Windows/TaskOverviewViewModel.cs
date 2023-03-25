@@ -22,11 +22,6 @@ namespace ProjectManagement.Presentation.WPF
         private readonly IList<Pool> mPools;
 
         /// <summary>
-        /// The locally stored task description input
-        /// </summary>
-        private string mTaskDescriptionInput = string.Empty;
-
-        /// <summary>
         /// The locally stored selected <see cref="Pool"/>
         /// </summary>
         private Pool mSelectedPool;
@@ -62,36 +57,14 @@ namespace ProjectManagement.Presentation.WPF
             }
         }
 
-        /// <summary>
-        /// Gets or sets the task description input
-        /// </summary>
-        public string TaskDescriptionInput
-        {
-            get => mTaskDescriptionInput;
-            set { 
-                mTaskDescriptionInput = value;
-                NotifyPropertyChanged();
-            }
-        }
-
         #endregion
 
         #region Commands
 
         /// <summary>
-        /// Gets or sets the <see cref="ICommand"/> to add a <see cref="Task"/>
-        /// </summary>
-        public ICommand AddTaskCommand { get; set; }
-
-        /// <summary>
         /// Gets or sets the <see cref="ICommand"/> to create a new pool
         /// </summary>
         public ICommand CreatePoolCommand { get; set; }
-
-        /// <summary>
-        /// Gets or sets the <see cref="ICommand"/> to open the popout
-        /// </summary>
-        public ICommand OpenPopoutCommand { get; set; }
 
         /// <summary>
         /// Gets or sets the <see cref="ICommand"/> to edit the selected pool
@@ -116,9 +89,7 @@ namespace ProjectManagement.Presentation.WPF
             mPools = new List<Pool>();
 
             // Set up commands
-            AddTaskCommand = new RelayCommand(AddTask);
             CreatePoolCommand = new RelayCommand(CreatePool);
-            OpenPopoutCommand = new RelayCommand(OpenPopout);
             EditPoolCommand = new RelayCommand(EditPool);
             OpenConfigCommand = new RelayCommand(OpenConfig);
 
@@ -175,37 +146,6 @@ namespace ProjectManagement.Presentation.WPF
         }
 
         /// <summary>
-        /// Adds a new <see cref="Task"/> based on the <see cref="TaskDescriptionInput"/>
-        /// </summary>
-        private void AddTask()
-        {
-            // Check if description has words
-            if (string.IsNullOrEmpty(TaskDescriptionInput))
-                return;
-
-            // Create and add a new task
-            var task = new Task()
-            {
-                Description = TaskDescriptionInput,
-                Status = TaskStatus.NotYetStarted
-            };
-
-            // Add the task to the pool
-            SelectedPool.AddTask(task);
-
-            // Save the data to the database
-            mContext.Tasks.Add(task);
-            mContext.SaveChangesAsync();
-
-            // Set the description input to empty
-            TaskDescriptionInput = string.Empty;
-
-            // Notify that the collection has been updated
-            NotifyPropertyChanged(nameof(Pools));
-            NotifyPropertyChanged(nameof(SelectedPool));
-        }
-
-        /// <summary>
         /// Create a new pool
         /// </summary>
         private void CreatePool()
@@ -213,7 +153,7 @@ namespace ProjectManagement.Presentation.WPF
             // Create the pool and show the editor
             var p = mUiService.ShowPoolEditor(new Pool());
 
-            // If the name of the pool is emtpy...
+            // If the name of the pool is empty...
             if (string.IsNullOrEmpty(p.Name))
                 // Return
                 return;
@@ -243,19 +183,6 @@ namespace ProjectManagement.Presentation.WPF
             mContext.SaveChangesAsync();
 
             // Notify changes
-            NotifyPropertyChanged(nameof(Pools));
-            NotifyPropertyChanged(nameof(SelectedPool));
-        }
-
-        /// <summary>
-        /// Opens the pop out for task input
-        /// </summary>
-        private void OpenPopout()
-        {
-            // Show the task input with the selected pool
-            mUiService.ShowTaskInput(SelectedPool);
-
-            // Notify any changes
             NotifyPropertyChanged(nameof(Pools));
             NotifyPropertyChanged(nameof(SelectedPool));
         }

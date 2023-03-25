@@ -38,14 +38,14 @@ public class ApplicationDbContext: DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         // Create the directory path of the database file
-        var path = Path.Join(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ProjectManagement");
+        var path = Path.Join(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Taskr");
 
         // Ensure the directory exists
         if (!Directory.Exists(path))
             Directory.CreateDirectory(path);
 
-        // Setup the database to use sqlite
-        optionsBuilder.UseSqlite($"Data Source={Path.Join(path, $"ProjectManagement.db")}");
+        // Setup the database to use SQLite
+        optionsBuilder.UseSqlite($"Data Source={Path.Join(path, $"Taskr.db")}");
     }
 
     /// <inheritdoc/>

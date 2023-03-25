@@ -11,7 +11,6 @@
         Width="1280"
         WindowStartupLocation="CenterScreen"
         DataContext="{Binding Source={StaticResource IocContainer}, Path=TaskOverviewViewModel}"
-        FocusManager.FocusedElement="{Binding ElementName=txtDescriptionInput}"
         Background="{StaticResource Background}">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -110,46 +109,10 @@
         
         <!--#region Tasks-->
         
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+        <local:TaskViewer Grid.Column="1"
+                          Pool="{Binding RelativeSource={RelativeSource AncestorType=local:TaskOverview}, Path=DataContext.SelectedPool}"
+                          DataContext="{Binding Source={StaticResource IocContainer}, Path=TaskViewerViewModel}"/>
 
-            <Border Grid.Row="0"
-                    Padding="12"
-                    BorderBrush="{StaticResource BackgroundLightBrush}"
-                    BorderThickness="0 0 0 2">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-
-                    <TextBox Grid.Column="0"
-                             Text="{Binding TaskDescriptionInput, UpdateSourceTrigger=PropertyChanged}"
-                             Name="txtDescriptionInput"/>
-
-                    <Button Grid.Column="1"
-                            Margin="12 0 0 0"
-                            Content="{StaticResource FaPlus}"
-                            FontFamily="{StaticResource FaSolid}"
-                            IsDefault="True"
-                            Command="{Binding AddTaskCommand}"/>
-
-                    <Button Grid.Column="2"
-                            Margin="12 0 0 0"
-                            Content="{StaticResource FaExternalLink}"
-                            FontFamily="{StaticResource FaSolid}"
-                            Command="{Binding OpenPopoutCommand}"/>
-                </Grid>
-            </Border>
-
-            <local:TaskViewer Grid.Row="1"
-                              Tasks="{Binding DataContext.SelectedPool.Tasks, RelativeSource={RelativeSource AncestorType=local:TaskOverview}}"/>
-        </Grid>
-        
         <!--#endregion-->
     </Grid>
 </Window>

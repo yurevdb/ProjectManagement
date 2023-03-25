@@ -13,6 +13,11 @@
         private string mDescription = string.Empty;
 
         /// <summary>
+        /// The locally stored title
+        /// </summary>
+        private string mTitle = string.Empty;
+
+        /// <summary>
         /// The locally stored status
         /// </summary>
         private TaskStatus mStatus = TaskStatus.NotYetStarted;
@@ -37,6 +42,11 @@
         /// </summary>
         private readonly IList<Tag> mTags;
 
+        /// <summary>
+        /// The locally stored <see cref="TaskPriority"/>
+        /// </summary>
+        private TaskPriority mPriority = TaskPriority.Medium;
+
         #endregion
 
         #region Public Properties
@@ -50,6 +60,19 @@
             set
             {
                 mDescription = value;
+                Update();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the title of the task
+        /// </summary>
+        public string Title
+        {
+            get => string.IsNullOrEmpty(mTitle) ? mDescription : mTitle;
+            set
+            {
+                mTitle = value;
                 Update();
             }
         }
@@ -109,6 +132,19 @@
             }
         }
 
+        /// <summary>
+        /// Gets or sets the <see cref="TaskPriority"/>
+        /// </summary>
+        public TaskPriority Priority 
+        {
+            get => mPriority;
+            set
+            {
+                mPriority = value;
+                Update();
+            } 
+        }
+        
         #endregion
 
         #region Constructor

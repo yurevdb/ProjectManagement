@@ -1,5 +1,4 @@
 ﻿using ProjectManagement.Core;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -15,26 +14,29 @@ namespace ProjectManagement.Presentation.WPF
         /// <summary>
         /// Gets or sets the tasks property
         /// </summary>
-        public IEnumerable<Task> Tasks
+        public Pool Pool
         {
-            get => (IEnumerable<Task>)GetValue(TasksProperty);
-            set => SetValue(TasksProperty, value);
+            get => (Pool)GetValue(PoolProperty);
+            set => SetValue(PoolProperty, value);
         }
 
         // Using a DependencyProperty as the backing store for Tasks.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty TasksProperty = DependencyProperty.Register(nameof(Tasks), 
-                                                                                              typeof(IEnumerable<Task>), 
-                                                                                              typeof(TaskViewer),
-                                                                                              new PropertyMetadata(new List<Task>(), TasksPropertyChangedCallback));
+        public static readonly DependencyProperty PoolProperty = DependencyProperty.Register(nameof(Pool), 
+                                                                                             typeof(Pool), 
+                                                                                             typeof(TaskViewer),
+                                                                                             new PropertyMetadata(new Pool(), PoolPropertyChangedCallback));
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="e"></param>
-        private static void TasksPropertyChangedCallback(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void PoolPropertyChangedCallback(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            ((TaskViewerViewModel)((TaskViewer)obj).DataContext).SetTasks((IEnumerable<Task>)e.NewValue);
+            if(((TaskViewer)obj).DataContext is TaskViewerViewModel vm)
+            {
+                vm.SetPool((Pool)e.NewValue);
+            }
         }
 
         #endregion

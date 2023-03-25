@@ -6,13 +6,13 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <StartupObject>ProjectManagement.Presentation.WPF.App</StartupObject>
-    <ApplicationIcon>Logo.ico</ApplicationIcon>
+    <ApplicationIcon>Logo_Medium.ico</ApplicationIcon>
     <AssemblyName>Taskr</AssemblyName>
 	  <RuntimeIdentifier>win-x64</RuntimeIdentifier>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Logo.ico" />
+    <Content Include="Logo_Medium.ico" />
   </ItemGroup>
 
   <ItemGroup>

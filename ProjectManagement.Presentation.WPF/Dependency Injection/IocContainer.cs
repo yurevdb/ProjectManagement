@@ -59,7 +59,7 @@ namespace ProjectManagement.Presentation.WPF
         public IocContainer()
         {
             // Initialize the kernel
-            mKernel = new StandardKernel(new ViewmodelModule(), new ServiceModule(), new PersistanceModule());
+            mKernel = new StandardKernel(new ViewmodelModule(), new ServiceModule(), new PersistenceModule());
 
             // Ensure the database exists
             mKernel.Get<ApplicationDbContext>().Database.EnsureCreated();
