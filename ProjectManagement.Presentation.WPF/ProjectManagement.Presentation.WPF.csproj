@@ -37,8 +37,4 @@
     <PackageReference Include="Ninject" Version="3.3.6" />
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="dotnet publish ProjectManagement.Presentation.WPF.csproj -c Release --self-contained -p:PublishSingleFile=true --no-build" />
-  </Target>
-
 </Project>

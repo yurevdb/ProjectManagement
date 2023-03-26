@@ -41,4 +41,8 @@
         </Setter>
     </Style>
 
+    <Style TargetType="{x:Type ComboBox}">
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+    </Style>
+
 </ResourceDictionary>

@@ -65,7 +65,23 @@
                          Grid.Row="1"
                          Grid.Column="1"
                          Margin="12 0 0 12"/>
-                
+
+                <!--#endregion-->
+
+                <!--#region Description-->
+
+                <TextBlock Text="Pool"
+                           Grid.Row="2"
+                           Grid.Column="0"
+                           FontSize="{StaticResource FontSizeLarge}"/>
+
+                <ComboBox Grid.Row="2"
+                          Grid.Column="1"
+                          Margin="12 0 0 12"
+                          ItemsSource="{Binding Pools}"
+                          SelectedItem="{Binding Task.Pool}"
+                          DisplayMemberPath="Name"/>
+
                 <!--#endregion-->
             </Grid>
 

@@ -1,6 +1,8 @@
 ﻿using ProjectManagement.Core;
 using ProjectManagement.Persistence;
 using ProjectManagement.Presentation.Core;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 
@@ -39,6 +41,11 @@ namespace ProjectManagement.Presentation.WPF
                 NotifyPropertyChanged();
             }
         }
+
+        /// <summary>
+        /// Gets the available pools
+        /// </summary>
+        public IEnumerable<Pool> Pools => context.Pools.ToList();
 
         #endregion
 
