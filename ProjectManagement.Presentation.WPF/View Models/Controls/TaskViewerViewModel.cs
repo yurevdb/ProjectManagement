@@ -33,7 +33,7 @@ namespace ProjectManagement.Presentation.WPF
         /// <summary>
         /// The locally stored pool that the tasks are related to
         /// </summary>
-        private Pool mPool;
+        private Pool? mPool = null;
 
         #endregion
 
@@ -42,7 +42,12 @@ namespace ProjectManagement.Presentation.WPF
         /// <summary>
         /// Gets the tasks
         /// </summary>
-        public IEnumerable<Task> Tasks => mPool?.Tasks.ToList();
+        public IEnumerable<Task> Tasks => context.Tasks.Where(t => t.Pool == mPool).Where(t => t.Status < TaskStatus.Done).ToList();
+
+        /// <summary>
+        /// Gets the tasks that are <see cref="TaskStatus.Done"/>
+        /// </summary>
+        public IEnumerable<Task> DoneTasks => context.Tasks.Where(t => t.Pool == mPool).Where(t => t.Status == TaskStatus.Done).ToList();
 
         /// <summary>
         /// Gets or sets the task description input
@@ -76,6 +81,11 @@ namespace ProjectManagement.Presentation.WPF
         /// </summary>
         public ICommand AddTaskCommand { get; set; }
 
+        /// <summary>
+        /// Gets or sets the <see cref="ICommand"/> to set the task to <see cref="TaskStatus.Done"/>
+        /// </summary>
+        public ICommand SetTaskToDoneCommand { get; set; }
+
         #endregion
 
         #region Constructor
@@ -91,6 +101,7 @@ namespace ProjectManagement.Presentation.WPF
             OpenTaskEditorCommand = new RelayParameterizedCommand(t => OpenTaskEditor((Task)t));
             AddTaskCommand = new RelayCommand(AddTask);
             OpenPopoutCommand = new RelayCommand(OpenPopout);
+            SetTaskToDoneCommand = new RelayParameterizedCommand(t => SetTaskToDone((Task)t));
         }
 
         #endregion
@@ -105,6 +116,7 @@ namespace ProjectManagement.Presentation.WPF
         {
             mPool = pool;
             NotifyPropertyChanged(nameof(Tasks));
+            NotifyPropertyChanged(nameof(DoneTasks));
         }
 
         #endregion
@@ -164,6 +176,26 @@ namespace ProjectManagement.Presentation.WPF
 
             // Notify any changes
             NotifyPropertyChanged(nameof(Tasks));
+        }
+
+        /// <summary>
+        /// Set the given <see cref="Task"/> to <see cref="TaskStatus.Done"/>
+        /// </summary>
+        /// <param name="task">The <see cref="Task"/> to update</param>
+        private async void SetTaskToDone(Task task)
+        {
+            // Set status to done
+            if (task.Status == TaskStatus.Done)
+                task.Status = TaskStatus.InProgress;
+            else if (task.Status < TaskStatus.Done)
+                    task.Status = TaskStatus.Done;
+
+            // Save changes
+            await context.SaveChangesAsync();
+
+            // Notify changes
+            NotifyPropertyChanged(nameof(Tasks)); 
+            NotifyPropertyChanged(nameof(DoneTasks));
         }
 
         #endregion
