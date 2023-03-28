@@ -50,7 +50,7 @@ namespace ProjectManagement.Presentation.WPF
         /// </summary>
         public Pool SelectedPool 
         {
-            get => mSelectedPool;
+            get => mSelectedPool!;
             set {
                 mSelectedPool = value;
                 NotifyPropertyChanged();
@@ -201,7 +201,11 @@ namespace ProjectManagement.Presentation.WPF
         /// </summary>
         private void OpenConfig()
         {
+            // Show the config
             mUiService.ShowConfig();
+
+            NotifyPropertyChanged(nameof(Pools));
+            NotifyPropertyChanged(nameof(SelectedPool));
         }
         
         /// <summary>

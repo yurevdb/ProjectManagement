@@ -23,7 +23,12 @@ namespace ProjectManagement.Presentation.WPF
         /// <summary>
         /// The locally stored <see cref="ApplicationDbContext"/>
         /// </summary>
-        private readonly ApplicationDbContext context;
+        private readonly ApplicationDbContext mContext;
+
+        /// <summary>
+        /// The locally stored <see cref="IConfig"/>
+        /// </summary>
+        private readonly IConfig mConfig;
 
         /// <summary>
         /// The locally stored task description input
@@ -42,12 +47,21 @@ namespace ProjectManagement.Presentation.WPF
         /// <summary>
         /// Gets the tasks
         /// </summary>
-        public IEnumerable<Task> Tasks => context.Tasks.Where(t => t.Pool == mPool).Where(t => t.Status < TaskStatus.Done).ToList();
+        public IEnumerable<Task> Tasks => mContext.Tasks.Where(t => t.Pool == mPool).Where(t => t.Status < TaskStatus.Done).ToList();
 
         /// <summary>
         /// Gets the tasks that are <see cref="TaskStatus.Done"/>
         /// </summary>
-        public IEnumerable<Task> DoneTasks => context.Tasks.Where(t => t.Pool == mPool).Where(t => t.Status == TaskStatus.Done).ToList();
+        public IEnumerable<Task> DoneTasks
+        {
+            get
+            {
+                if (mConfig.ShowDoneTasks)
+                    return mContext.Tasks.Where(t => t.Pool == mPool).Where(t => t.Status == TaskStatus.Done).ToList();
+                else
+                    return new List<Task>();
+            }
+        }
 
         /// <summary>
         /// Gets or sets the task description input
@@ -93,10 +107,11 @@ namespace ProjectManagement.Presentation.WPF
         /// <summary>
         /// Default Constructor
         /// </summary>
-        public TaskViewerViewModel(UiService uiService, ApplicationDbContext context)
+        public TaskViewerViewModel(UiService uiService, ApplicationDbContext context, IConfig config)
         {
             mUiService = uiService;
-            this.context = context;
+            mContext = context;
+            mConfig = config;
 
             OpenTaskEditorCommand = new RelayParameterizedCommand(t => OpenTaskEditor((Task)t));
             AddTaskCommand = new RelayCommand(AddTask);
@@ -153,11 +168,11 @@ namespace ProjectManagement.Presentation.WPF
             };
 
             // Add the task to the pool
-            mPool.AddTask(task);
+            mPool!.AddTask(task);
 
             // Save the data to the database
-            context.Tasks.Add(task);
-            context.SaveChangesAsync();
+            mContext.Tasks.Add(task);
+            mContext.SaveChangesAsync();
 
             // Set the description input to empty
             TaskDescriptionInput = string.Empty;
@@ -191,7 +206,7 @@ namespace ProjectManagement.Presentation.WPF
                     task.Status = TaskStatus.Done;
 
             // Save changes
-            await context.SaveChangesAsync();
+            await mContext.SaveChangesAsync();
 
             // Notify changes
             NotifyPropertyChanged(nameof(Tasks)); 

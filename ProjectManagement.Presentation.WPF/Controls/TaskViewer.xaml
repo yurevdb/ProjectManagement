@@ -191,7 +191,7 @@
 
         <!-- Done Tasks -->
         <Border Grid.Row="3"
-                Visibility="{Binding DoneTasks,Converter={core:HasItemsToVisibilityConverter}}"
+                Visibility="{Binding DoneTasks, Converter={core:HasItemsToVisibilityConverter}}"
                 Margin="12 0">
             <ScrollViewer HorizontalScrollBarVisibility="Disabled"
                           VerticalScrollBarVisibility="Hidden"

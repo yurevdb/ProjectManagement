@@ -6,6 +6,10 @@ namespace ProjectManagement.Persistence
     {
         public override void Load()
         {
+            // Config first to be used in DbContext
+            Bind<IConfig>().ToMethod(context => JsonConfig.Load()).InSingletonScope();
+
+            // Db Context
             Bind<ApplicationDbContext>().ToSelf().InSingletonScope();
         }
     }

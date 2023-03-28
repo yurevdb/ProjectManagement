@@ -12,7 +12,31 @@
         Background="{StaticResource Background}"
         DataContext="{Binding Source={StaticResource IocContainer}, Path=ConfigViewModel}"
         ShowInTaskbar="False">
-    <Grid>
-        
-    </Grid>
+    <Border Padding="12">
+        <Grid Grid.IsSharedSizeScope="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" SharedSizeGroup="names"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       Text="Show Done Tasks"/>
+
+            <CheckBox Grid.Column="1"
+                      IsChecked="{Binding Config.ShowDoneTasks}"
+                      Margin="12 0 0 0"/>
+
+            <Button Content="Save"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    Margin="0 12 0 0"
+                    Background="{StaticResource AccentBrush}"
+                    Command="{Binding SaveCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+        </Grid>
+    </Border>
 </Window>
