@@ -2,6 +2,9 @@
 
 namespace ProjectManagement.Persistence
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ConfigDbContext : DbContext
     {
     }

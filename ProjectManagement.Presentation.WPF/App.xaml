@@ -10,6 +10,7 @@
                 <ResourceDictionary Source="/ProjectManagement.Presentation.Core;component/Styles/Texts.xaml"/>
                 <ResourceDictionary Source="/ProjectManagement.Presentation.Core;component/Styles/Buttons.xaml"/>
                 <ResourceDictionary Source="/ProjectManagement.Presentation.Core;component/Styles/Input.xaml"/>
+                <ResourceDictionary Source="/ProjectManagement.Presentation.Core;component/Styles/Extra.xaml"/>
                 <ResourceDictionary Source="/ProjectManagement.Presentation.Core;component/Styles/Windows.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <local:IocContainer x:Key="IocContainer"/>

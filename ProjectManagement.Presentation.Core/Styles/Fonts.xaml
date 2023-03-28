@@ -17,5 +17,6 @@
     <sys:String x:Key="FaEdit">&#xf044;</sys:String>
     <sys:String x:Key="FaCircle">&#xf111;</sys:String>
     <sys:String x:Key="FaCircleCheck">&#xf058;</sys:String>
+    <sys:String x:Key="FaExclamation">&#x21;</sys:String>
     
 </ResourceDictionary>

@@ -79,5 +79,23 @@ namespace ProjectManagement.Presentation.WPF
             // Return the task
             return task;
         }
+
+        /// <summary>
+        /// Show the confirmation popup with the given message
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public bool ShowConfirmationPopup(string message) 
+        {
+            var vm = new ConfirmationPopupViewModel(message);
+
+            var w = new ConfirmationPopup()
+            {
+                DataContext = vm,
+                Owner = Application.Current.MainWindow
+            };
+
+            return w.ShowDialog()!.Value;
+        }
     }
 }

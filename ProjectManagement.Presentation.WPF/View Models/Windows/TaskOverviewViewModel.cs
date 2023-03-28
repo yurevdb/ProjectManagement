@@ -24,7 +24,7 @@ namespace ProjectManagement.Presentation.WPF
         /// <summary>
         /// The locally stored selected <see cref="Pool"/>
         /// </summary>
-        private Pool mSelectedPool;
+        private Pool? mSelectedPool = null;
 
         /// <summary>
         /// The locally stored <see cref="UiService"/>
@@ -76,6 +76,11 @@ namespace ProjectManagement.Presentation.WPF
         /// </summary>
         public ICommand OpenConfigCommand { get; set; }
 
+        /// <summary>
+        /// Gets or sets the <see cref="ICommand"/> to delete the selected pool
+        /// </summary>
+        public ICommand DeletePoolCommand { get; set; }
+
         #endregion
 
         #region Constructor
@@ -92,6 +97,7 @@ namespace ProjectManagement.Presentation.WPF
             CreatePoolCommand = new RelayCommand(CreatePool);
             EditPoolCommand = new RelayCommand(EditPool);
             OpenConfigCommand = new RelayCommand(OpenConfig);
+            DeletePoolCommand = new RelayCommand(DeletePool);
 
             // Set services
             this.mUiService = mUiService;
@@ -110,6 +116,9 @@ namespace ProjectManagement.Presentation.WPF
         /// </summary>
         private void LoadData()
         {
+            // Clear the pools
+            mPools.Clear();
+
             // If the database does not have any pools
             if(!mContext.Pools.Any())
             {
@@ -195,6 +204,28 @@ namespace ProjectManagement.Presentation.WPF
             mUiService.ShowConfig();
         }
         
+        /// <summary>
+        /// Delete the selected pool
+        /// </summary>
+        private async void DeletePool()
+        {
+            // TConfirm the deletion of the currently selected pool and it's tasks
+            if (mUiService.ShowConfirmationPopup($"Are you sure you want to delete '{SelectedPool.Name}' and all it's associated tasks?"))
+            {
+                // Remove the tasks
+                mContext.RemoveRange(SelectedPool.Tasks);
+
+                // Remove the pool
+                mContext.Remove(SelectedPool);
+
+                // Save the changes
+                await mContext.SaveChangesAsync();
+
+                // Load the data
+                LoadData();
+            }
+        }
+
         #endregion
     }
 }
