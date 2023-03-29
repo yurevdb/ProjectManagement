@@ -12,7 +12,7 @@ namespace ProjectManagement.Persistence.Config.Implementations
         /// <summary>
         /// The config file path
         /// </summary>
-        private const string CONFIG_FILE = @"%APPDATA%\Taskr\Taskr.json";
+        private static readonly string CONFIG_FILE = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Taskr", "Taskr.json");
 
         #endregion
 

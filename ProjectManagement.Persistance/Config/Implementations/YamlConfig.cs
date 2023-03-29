@@ -13,7 +13,7 @@ namespace ProjectManagement.Persistence
         /// <summary>
         /// The config file path
         /// </summary>
-        private const string CONFIG_FILE = @"%APPDATA%\Taskr\Taskr.yml";
+        private static readonly string CONFIG_FILE = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Taskr", "Taskr.yml");
 
         #endregion
 
