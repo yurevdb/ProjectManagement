@@ -17,6 +17,13 @@ namespace ProjectManagement.Persistence
 
         #endregion
 
+        #region Events
+
+        /// <inheritdoc/>
+        public event EventHandler ConfigUpdated;
+
+        #endregion
+
         #region Public Properties
 
         /// <inheritdoc/>
@@ -45,6 +52,9 @@ namespace ProjectManagement.Persistence
 
             // Write to file
             File.WriteAllText(CONFIG_FILE, ser.Serialize(this));
+
+            // Trigger update
+            ConfigUpdated(this, EventArgs.Empty);
         }
 
         #endregion

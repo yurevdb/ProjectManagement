@@ -16,6 +16,13 @@ namespace ProjectManagement.Persistence.Config.Implementations
 
         #endregion
 
+        #region Events
+
+        /// <inheritdoc/>
+        public event EventHandler ConfigUpdated;
+
+        #endregion
+
         #region Public Properties
 
         /// <inheritdoc/>
@@ -38,7 +45,11 @@ namespace ProjectManagement.Persistence.Config.Implementations
         #region Public Functions
 
         /// <inheritdoc/>
-        public void Save() => File.WriteAllText(CONFIG_FILE, JsonSerializer.Serialize<IConfig>(this));
+        public void Save()
+        {
+            File.WriteAllText(CONFIG_FILE, JsonSerializer.Serialize<IConfig>(this));
+            ConfigUpdated(this, EventArgs.Empty);
+        }
 
         #endregion
 

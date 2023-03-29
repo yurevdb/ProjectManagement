@@ -109,14 +109,23 @@ namespace ProjectManagement.Presentation.WPF
         /// </summary>
         public TaskViewerViewModel(UiService uiService, ApplicationDbContext context, IConfig config)
         {
+            // Set up services
             mUiService = uiService;
             mContext = context;
             mConfig = config;
 
+            // Set up commands
             OpenTaskEditorCommand = new RelayParameterizedCommand(t => OpenTaskEditor((Task)t));
             AddTaskCommand = new RelayCommand(AddTask);
             OpenPopoutCommand = new RelayCommand(OpenPopout);
             SetTaskToDoneCommand = new RelayParameterizedCommand(t => SetTaskToDone((Task)t));
+
+            // Config updated
+            mConfig.ConfigUpdated += (s, e) =>
+            {
+                NotifyPropertyChanged(nameof(Tasks));
+                NotifyPropertyChanged(nameof(DoneTasks));
+            };
         }
 
         #endregion
