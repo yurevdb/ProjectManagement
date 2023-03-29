@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectManagement.Presentation.WPF"
         mc:Ignorable="d"
-        Title="Config" 
-        Height="450" 
-        Width="800"
+        Title="Config"
         WindowStartupLocation="CenterOwner"
         Background="{StaticResource Background}"
         DataContext="{Binding Source={StaticResource IocContainer}, Path=ConfigViewModel}"
-        ShowInTaskbar="False">
+        ShowInTaskbar="False"
+        SizeToContent="WidthAndHeight"
+        MinWidth="360"
+        MaxWidth="960">
     <Border Padding="12">
         <Grid Grid.IsSharedSizeScope="True">
             <Grid.ColumnDefinitions>
@@ -28,7 +29,8 @@
 
             <CheckBox Grid.Column="1"
                       IsChecked="{Binding Config.ShowDoneTasks}"
-                      Margin="12 0 0 0"/>
+                      Margin="12 0 0 0"
+                      VerticalAlignment="Center"/>
 
             <Button Content="Save"
                     Grid.Row="1"

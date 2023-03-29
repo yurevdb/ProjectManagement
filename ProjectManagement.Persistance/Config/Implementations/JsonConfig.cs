@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace ProjectManagement.Persistence
+namespace ProjectManagement.Persistence.Config.Implementations
 {
     /// <summary>
     /// Implementation of the <see cref="IConfig"/> for JSON
@@ -30,7 +30,7 @@ namespace ProjectManagement.Persistence
         /// </summary>
         public JsonConfig()
         {
-            
+
         }
 
         #endregion
@@ -55,7 +55,7 @@ namespace ProjectManagement.Persistence
                 Directory.CreateDirectory(Path.GetDirectoryName(CONFIG_FILE));
 
             // Return the local config file or a new Config item
-            return JsonSerializer.Deserialize<JsonConfig>(File.ReadAllText(CONFIG_FILE)) ?? new JsonConfig();
+            return File.Exists(CONFIG_FILE) ? JsonSerializer.Deserialize<JsonConfig>(File.ReadAllText(CONFIG_FILE)) : new JsonConfig();
         }
 
         #endregion

@@ -34,7 +34,8 @@
                           IsChecked="{Binding Status, Converter={core:TaskStatusToBooleanConverter}, Mode=OneWay}"
                           VerticalAlignment="Center"
                           Command="{Binding RelativeSource={RelativeSource AncestorType=local:TaskViewer}, Path=DataContext.SetTaskToDoneCommand}"
-                          CommandParameter="{Binding}"/>
+                          CommandParameter="{Binding}"
+                          Style="{StaticResource FancyCheckBox}"/>
 
                 <!--#endregion-->
 
