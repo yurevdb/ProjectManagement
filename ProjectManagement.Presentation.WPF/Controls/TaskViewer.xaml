@@ -64,8 +64,8 @@
 
                 <!--#region Open Button-->
 
-                <Button Content="{StaticResource FaEdit}"
-                        FontFamily="{StaticResource FaSolid}"
+                <Button Content="{StaticResource FaEye}"
+                        FontFamily="{StaticResource FaRegular}"
                         Command="{Binding RelativeSource={RelativeSource AncestorType=local:TaskViewer}, Path=DataContext.OpenTaskEditorCommand}"
                         CommandParameter="{Binding}"
                         Visibility="{Binding Status, Converter={core:TaskStatusToVisibilityConverter}, ConverterParameter='Done'}"

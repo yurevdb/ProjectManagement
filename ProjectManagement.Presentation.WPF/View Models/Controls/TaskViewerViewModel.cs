@@ -181,7 +181,7 @@ namespace ProjectManagement.Presentation.WPF
 
             // Save the data to the database
             mContext.Tasks.Add(task);
-            mContext.SaveChangesAsync();
+            mContext.SaveChanges();
 
             // Set the description input to empty
             TaskDescriptionInput = string.Empty;

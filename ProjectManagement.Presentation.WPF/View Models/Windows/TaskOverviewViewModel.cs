@@ -133,7 +133,7 @@ namespace ProjectManagement.Presentation.WPF
 
                 // Add to the database
                 mContext.Pools.Add(p);
-                mContext.SaveChangesAsync();
+                mContext.SaveChanges();
             }
             else
             {
@@ -173,8 +173,8 @@ namespace ProjectManagement.Presentation.WPF
 
             // Save the pool to the database
             mContext.Pools.Add(p);
-            mContext.SaveChangesAsync();
-
+            mContext.SaveChanges();
+                
             // Set the new pool as the selected pool
             SelectedPool = p;
             NotifyPropertyChanged(nameof(SelectedPool));
@@ -189,7 +189,7 @@ namespace ProjectManagement.Presentation.WPF
             mUiService.ShowPoolEditor(SelectedPool);
 
             // Save changes to the database
-            mContext.SaveChangesAsync();
+            mContext.SaveChanges();
 
             // Notify changes
             NotifyPropertyChanged(nameof(Pools));

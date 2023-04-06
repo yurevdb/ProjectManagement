@@ -11,9 +11,10 @@
                     <Border x:Name="Border"
                             Background="{StaticResource BackgroundLightBrush}"
                             BorderThickness="1"
-                            BorderBrush="{StaticResource TopGradientBrush}">
+                            BorderBrush="{StaticResource TopGradientBrush}"
+                            Padding="0 12">
                         <StackPanel IsItemsHost="True"
-                                    KeyboardNavigation.DirectionalNavigation="Cycle" />
+                                    KeyboardNavigation.DirectionalNavigation="Cycle"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -27,7 +28,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type MenuItem}">
                     <Border x:Name="Border"
-                            Padding="12 3"
+                            Padding="24 6"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}">
                         <ContentPresenter ContentSource="Header"

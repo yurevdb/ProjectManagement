@@ -8,6 +8,15 @@ namespace ProjectManagement.Persistence;
 /// </summary>
 public class ApplicationDbContext: DbContext
 {
+    #region Private Members
+
+    /// <summary>
+    /// The locally stored <see cref="IConfig"/>
+    /// </summary>
+    private readonly IConfig mConfig;
+
+    #endregion
+
     #region DbSets
 
     /// <summary>
@@ -32,20 +41,35 @@ public class ApplicationDbContext: DbContext
 
     #endregion
 
+    #region Constructor
+
+    /// <summary>
+    /// Default Constructor
+    /// </summary>
+    public ApplicationDbContext(IConfig config)
+    {
+        mConfig = config;
+    }
+
+    #endregion
+
     #region Configuration
 
     /// <inheritdoc/>
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        // Create the directory path of the database file
-        var path = Path.Join(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Taskr");
+        // TODO: find a more beautiful solution to choosing the persistence method
+        if (mConfig.SqlServer != null)
+        {
+            mConfig.SqlServer.Configure(optionsBuilder);
+            return;
+        }
 
-        // Ensure the directory exists
-        if (!Directory.Exists(path))
-            Directory.CreateDirectory(path);
-
-        // Setup the database to use SQLite
-        optionsBuilder.UseSqlite($"Data Source={Path.Join(path, $"Taskr.db")}");
+        if (mConfig.Sqlite != null)
+        {
+            mConfig.Sqlite.Configure(optionsBuilder);
+            return;
+        }
     }
 
     /// <inheritdoc/>

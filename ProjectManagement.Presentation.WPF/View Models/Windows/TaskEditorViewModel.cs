@@ -89,7 +89,7 @@ namespace ProjectManagement.Presentation.WPF
         private void Close(Window window) 
         {
             // Save the changes
-            context.SaveChangesAsync();
+            context.SaveChanges();
 
             // Close the window
             window.Close();

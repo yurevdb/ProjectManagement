@@ -145,6 +145,21 @@
             } 
         }
         
+        ///// <summary>
+        ///// Gets or sets the due date of the task
+        ///// </summary>
+        //public DateTime? DueDate { get; set; }
+
+        ///// <summary>
+        ///// Gets or sets the start date of the task
+        ///// </summary>
+        //public DateTime? StartDate { get; set; }
+
+        ///// <summary>
+        ///// Gets or sets the date when the task was done
+        ///// </summary>
+        //public DateTime? DoneDate { get; set; }
+
         #endregion
 
         #region Constructor

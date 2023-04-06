@@ -29,6 +29,12 @@ namespace ProjectManagement.Persistence
         /// <inheritdoc/>
         public bool ShowDoneTasks { get; set; } = true;
 
+        /// <inheritdoc/>
+        public SqlitePersistance? Sqlite { get; set; }
+
+        /// <inheritdoc/>
+        public SqlServerPersistence? SqlServer { get; set; }
+
         #endregion
 
         #region Constructor
@@ -48,7 +54,7 @@ namespace ProjectManagement.Persistence
         public void Save() 
         {
             // Yaml serializer
-            var ser = new SerializerBuilder().WithNamingConvention(CamelCaseNamingConvention.Instance).Build();
+            var ser = new SerializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
 
             // Write to file
             File.WriteAllText(CONFIG_FILE, ser.Serialize(this));
@@ -72,10 +78,20 @@ namespace ProjectManagement.Persistence
                 Directory.CreateDirectory(Path.GetDirectoryName(CONFIG_FILE));
 
             // YAML deserializer
-            var des = new DeserializerBuilder().WithNamingConvention(CamelCaseNamingConvention.Instance).Build();
+            var des = new DeserializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
 
-            // Return the yamlconfig
-            return File.Exists(CONFIG_FILE) ? des.Deserialize<YamlConfig>(File.ReadAllText(CONFIG_FILE)) : new YamlConfig();
+            // If a config is found
+            if (File.Exists(CONFIG_FILE))
+                // Return it
+                return des.Deserialize<YamlConfig>(File.ReadAllText(CONFIG_FILE));
+
+            // Return a newly created config
+            return new YamlConfig() 
+            { 
+                Sqlite = new SqlitePersistance() { 
+                    Path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Taskr", "Taskr.db")
+                } 
+            };
         }
 
         #endregion
