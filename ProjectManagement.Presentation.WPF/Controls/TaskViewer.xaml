@@ -12,30 +12,22 @@
              FocusManager.FocusedElement="{Binding ElementName=txtDescriptionInput}">
 
     <UserControl.Resources>
-        <DataTemplate x:Key="TaskItemTemplate">
+        <!--#region Done Task Template-->
+        <DataTemplate x:Key="DoneTaskTemplate">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <!-- Checkbox -->
                     <ColumnDefinition Width="Auto"/>
-                    <!-- Description -->
+                    <!-- Title -->
                     <ColumnDefinition Width="*"/>
-                    <!-- Tags -->
-                    <ColumnDefinition Width="Auto"/>
-                    <!-- Complexity -->
-                    <ColumnDefinition Width="Auto"/>
-                    <!-- Open Button -->
-                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
                 <!--#region Checkbox-->
 
-                <CheckBox Grid.Column="0"
-                          Margin="0 0 12 0"
-                          IsChecked="{Binding Status, Converter={core:TaskStatusToBooleanConverter}, Mode=OneWay}"
-                          VerticalAlignment="Center"
-                          Command="{Binding RelativeSource={RelativeSource AncestorType=local:TaskViewer}, Path=DataContext.SetTaskToDoneCommand}"
-                          CommandParameter="{Binding}"
-                          Style="{StaticResource FancyCheckBox}"/>
+                <local:StatusIndicator Grid.Column="0"
+                                       Margin="0 0 12 0"
+                                       VerticalAlignment="Center"
+                                       Status="{Binding Status}"/>
 
                 <!--#endregion-->
 
@@ -45,38 +37,49 @@
                            FontSize="{StaticResource FontSizeLarge}"
                            Grid.Column="1"
                            Margin="0 0 12 0"
-                           Foreground="{Binding Status, Converter={core:TaskStatusToForegroundConverter}, ConverterParameter='Done'}"
-                           TextDecorations="{Binding Status, Converter={core:TaskStatusToTextDecorationsConverter}}"/>
+                           Foreground="{StaticResource SecondaryTextBrush}"
+                           TextDecorations="Strikethrough"/>
 
                 <!--#endregion-->
 
-                <!--#region Tags-->
-
-
-
-                <!--#endregion-->
-
-                <!--#region Complexity-->
-
-
-
-                <!--#endregion-->
-
-                <!--#region Open Button-->
-
-                <Button Content="{StaticResource FaEye}"
-                        FontFamily="{StaticResource FaRegular}"
-                        Command="{Binding RelativeSource={RelativeSource AncestorType=local:TaskViewer}, Path=DataContext.OpenTaskEditorCommand}"
-                        CommandParameter="{Binding}"
-                        Visibility="{Binding Status, Converter={core:TaskStatusToVisibilityConverter}, ConverterParameter='Done'}"
-                        Grid.Column="4"
-                        Background="Transparent"
-                        Padding="0"/>
-
-                <!--#endregion-->
             </Grid>
         </DataTemplate>
+        <!--#endregion-->
+
+        <!--#region Task Template-->
+        <DataTemplate x:Key="TaskTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <!-- Checkbox -->
+                    <ColumnDefinition Width="Auto"/>
+                    <!-- Title -->
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--#region Checkbox-->
+
+                <local:StatusIndicator Grid.Column="0"
+                                       Margin="0 0 12 0"
+                                       VerticalAlignment="Center"
+                                       Status="{Binding Status}"/>
+
+                <!--#endregion-->
+
+                <!--#region Title-->
+
+                <TextBlock Text="{Binding Title}"
+                           FontSize="{StaticResource FontSizeLarge}"
+                           Grid.Column="1"
+                           Margin="0 0 12 0"
+                           Foreground="{StaticResource PrimaryTextBrush}"/>
+
+                <!--#endregion-->
+
+            </Grid>
+        </DataTemplate>
+        <!--#endregion-->
     </UserControl.Resources>
+    
 
     <Grid>
         <Grid.RowDefinitions>
@@ -127,7 +130,7 @@
                   BorderThickness="0"
                   Padding="0 9"
                   Grid.Row="1"
-                  ItemTemplate="{StaticResource TaskItemTemplate}">
+                  ItemTemplate="{StaticResource TaskTemplate}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="Template">
@@ -198,7 +201,7 @@
                           VerticalScrollBarVisibility="Hidden"
                           Padding="0 12">
                 <ItemsControl ItemsSource="{Binding DoneTasks}"
-                              ItemTemplate="{StaticResource TaskItemTemplate}"/>
+                              ItemTemplate="{StaticResource DoneTaskTemplate}"/>
             </ScrollViewer>
         </Border>
         

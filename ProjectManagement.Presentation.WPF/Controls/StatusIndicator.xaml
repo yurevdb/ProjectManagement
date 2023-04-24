@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="ProjectManagement.Presentation.WPF.StatusIndicator"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProjectManagement.Presentation.WPF"
+             xmlns:core="clr-namespace:ProjectManagement.Presentation.Core;assembly=ProjectManagement.Presentation.Core"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <ToggleButton x:Name="tb">
+            <ToggleButton.Template>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid>
+                        <!--#region Status Indicator Visual-->
+
+                        <TextBlock Text="{StaticResource FaCircle}"
+                                   FontFamily="{StaticResource FaRegular}"
+                                   Foreground="{StaticResource AccentBrush}"
+                                   Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:StatusIndicator},
+                                                        Path=Status,
+                                                        Converter={core:TaskStatusToVisibilityConverter},
+                                                        ConverterParameter=0}"/>
+
+                        <TextBlock Text="{StaticResource FaCircleHalf}"
+                                   FontFamily="{StaticResource FaSolid}"
+                                   Foreground="{StaticResource AccentBrush}"
+                                   Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:StatusIndicator},
+                                                        Path=Status,
+                                                        Converter={core:TaskStatusToVisibilityConverter},
+                                                        ConverterParameter=1}"/>
+
+                        <TextBlock Text="{StaticResource FaCircleCheck}"
+                                   FontFamily="{StaticResource FaSolid}"
+                                   Foreground="{StaticResource AccentBrush}"
+                                   Visibility="{Binding RelativeSource={RelativeSource AncestorType=local:StatusIndicator},
+                                                        Path=Status,
+                                                        Converter={core:TaskStatusToVisibilityConverter},
+                                                        ConverterParameter=2}"/>
+
+                        <!--#endregion-->
+                    </Grid>
+                </ControlTemplate>
+            </ToggleButton.Template>
+        </ToggleButton>
+
+        <Popup Placement="Center"
+               VerticalOffset="30"
+               HorizontalOffset="1"
+               PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=local:StatusIndicator}}"
+               IsOpen="{Binding ElementName=tb, Path=IsChecked}"
+               StaysOpen="False"
+               AllowsTransparency="True">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Path Grid.Row="0"
+                      Data="M 0 8 L 8 0 L 16 8 Z"
+                      Fill="{StaticResource BottomGradientBrush}"
+                      Stroke="{StaticResource BottomGradientBrush}"
+                      HorizontalAlignment="Center"/>
+                <Border Grid.Row="1"
+                        ClipToBounds="True"
+                        CornerRadius="12"
+                        Background="{StaticResource BottomGradientBrush}">
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="{StaticResource FaCircle}"
+                                FontFamily="{StaticResource FaRegular}"
+                                Foreground="{StaticResource AccentBrush}"
+                                Background="{StaticResource BottomGradientBrush}"
+                                Click="Button1_Click"/>
+                        <Button Content="{StaticResource FaCircleHalf}"
+                                FontFamily="{StaticResource FaSolid}"
+                                Foreground="{StaticResource AccentBrush}"
+                                Background="{StaticResource BottomGradientBrush}"
+                                Click="Button2_Click"/>
+                        <Button Content="{StaticResource FaCircleCheck}"
+                                FontFamily="{StaticResource FaSolid}"
+                                Foreground="{StaticResource AccentBrush}"
+                                Background="{StaticResource BottomGradientBrush}"
+                                Click="Button3_Click"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Popup>
+    </Grid>
+</UserControl>

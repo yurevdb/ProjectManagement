@@ -16,8 +16,9 @@
     <sys:String x:Key="FaXMark">&#xf00d;</sys:String>
     <sys:String x:Key="FaEdit">&#xf044;</sys:String>
     <sys:String x:Key="FaCircle">&#xf111;</sys:String>
+    <sys:String x:Key="FaCircleHalf">&#xf042;</sys:String>
     <sys:String x:Key="FaCircleCheck">&#xf058;</sys:String>
     <sys:String x:Key="FaExclamation">&#x21;</sys:String>
     <sys:String x:Key="FaEye">&#xf06e;</sys:String>
-    
+
 </ResourceDictionary>

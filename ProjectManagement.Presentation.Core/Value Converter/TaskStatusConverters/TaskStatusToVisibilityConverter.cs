@@ -9,7 +9,7 @@ namespace ProjectManagement.Presentation.Core
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (TaskStatus)value == Enum.Parse<TaskStatus>(parameter?.ToString()) ? Visibility.Collapsed : Visibility.Visible;
+            return (TaskStatus)value == Enum.Parse<TaskStatus>(parameter?.ToString()) ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

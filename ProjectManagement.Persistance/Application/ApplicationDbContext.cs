@@ -58,6 +58,11 @@ public class ApplicationDbContext: DbContext
     /// <inheritdoc/>
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+#if DEBUG
+        optionsBuilder.UseInMemoryDatabase("debug");
+#endif
+
+#if !DEBUG
         // TODO: find a more beautiful solution to choosing the persistence method
         if (mConfig.SqlServer != null)
         {
@@ -70,6 +75,7 @@ public class ApplicationDbContext: DbContext
             mConfig.Sqlite.Configure(optionsBuilder);
             return;
         }
+#endif
     }
 
     /// <inheritdoc/>
@@ -81,5 +87,5 @@ public class ApplicationDbContext: DbContext
         modelBuilder.ApplyConfiguration(new TagConfiguration());
     }
 
-    #endregion
+#endregion
 }
